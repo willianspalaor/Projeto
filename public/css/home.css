@@ -1,0 +1,60 @@
+ul.menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #f1f1f1;
+}
+
+li.menu a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+li.menu a.active {
+    background-color: #333333;
+    color: white;
+}
+
+li.menu a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+}
+
+hr.basket {
+
+	border: 2px solid #000;
+}
+
+img.basket {
+
+	width : 180px;
+	height: 140px;
+}
+
+button.basket {
+
+	width: 30px;
+	height: 25px;
+}
+
+p.basket {
+
+  padding: 8px 16px;
+}
+
+
+.basket-quantity {
+	text-align :center;
+	font-weight: bold;
+}
+
+
+.modal-header, .close {
+      background-color: #333333;
+      color:white !important;
+      text-align: center;
+      font-size: 30px;
+}

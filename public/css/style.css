@@ -1,0 +1,12 @@
+.modal-header, .close {
+      background-color: #2a76aa;
+      color:white !important;
+      text-align: center;
+      font-size: 30px;
+  }
+
+  .modal-footer {
+      background-color: #f9f9f9;
+  }
+
+  
