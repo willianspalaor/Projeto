@@ -23,18 +23,38 @@ $(document).ready(function() {
     }
 
 
+    $('.btn-ok').on("click",function(){
+
+        var id = $(this).data("id");
+
+        $.ajax({
+
+            type: "POST",               
+            url: "/home/finishBuy",
+            data: 'product_id=' + id,
+            dataType: 'json',
+            success: function(response){
+                
+                $('#buy-modal').modal('show');  
+                $('#buy-modal').find('[name="buy_total"]').text(response.buy_total); 
+            }
+
+        });
+
+    });
+
+
     $('.btn-delete').on("click",function(){
 
         var id = $(this).data("id");
         deleteProduct(id);  
     });
 
-    $('.btn-ok').on("click",function(){
 
-        var id = $(this).data("id");
-        deleteProduct(id);  
+    $('.btn-back').on("click",function(){
+
+        window.location = '/home/index';
     });
-
 
     $('.btn-delete-all').on("click",function(){
 
@@ -53,6 +73,7 @@ $(document).ready(function() {
             deleteProduct(id); 
         }   
     });
+
 
     $('li.menu').on("click", function(){
 
@@ -114,5 +135,4 @@ $(document).ready(function() {
         });
 
 	});
-
 });

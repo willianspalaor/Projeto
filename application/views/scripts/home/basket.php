@@ -1,7 +1,7 @@
 <div class="wrapper" role="main">
 	<div class="container-fluid">
 		<div class="row">
-			<form id="basket-form" method="post" role="form" enctype="multipart/form-data" >
+			<form id="basket-form" method="post" role="form" >
 
 	        	<div class="form-group col-md-12">
 			    	<h3>Carrinho de Compras</h3>
@@ -15,7 +15,7 @@
 	            	<label>Ação</label> 
 	            </div>
 	            <div class="form-group col-md-12">
-	            	<hr>
+	            	<hr class="lowpad">
 	            </div>
 
 	            <?php if($this->hasSessionProducts()) : ?> 
@@ -61,12 +61,15 @@
 	            	<div class="text-right">
 	            		<br>
 	            		<hr class="basket">
-	            		<button data-id=<?php echo isset($products) ? $products : ''; ?> type="button" class="btn btn-primary btn-ok"><i class="glyphicon glyphicon-ok"></i> Finalizar compra
-	            		</button>
-	            		<button data-id=<?php echo isset($products) ? $products : ''; ?> type="button" class="btn btn-danger btn-delete-all"><i class="glyphicon glyphicon-remove"></i> Cancelar compra</button>
+	            		<button type="button" class="btn btn-primary btn-back"><i class="glyphicon glyphicon-arrow-left"></i> Continuar comprando</button>
+	            		<button data-id=<?php echo isset($products) ? $products : ''; ?> type="button" class="btn btn-success btn-ok"><i class="glyphicon glyphicon-ok"></i> Finalizar compra</button>
+	            		<button data-id=<?php echo isset($products) ? $products : ''; ?> type="button" class="btn btn-danger btn-delete-all" href="#" data-toggle="modal"><i class="glyphicon glyphicon-remove"></i> Cancelar compra</button>
 	            	</div>
 	            </div>
 	        </form>
+		</div>
+        <div>
+			<?php include_once 'buy.php';?> 
 		</div>
     </div>
 </div>

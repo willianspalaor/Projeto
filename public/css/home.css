@@ -45,6 +45,15 @@ p.basket {
   padding: 8px 16px;
 }
 
+hr.lowpad {
+  padding:0px;
+  margin:0px;
+}
+
+label.buy {
+
+  padding:13px;
+}
 
 .basket-quantity {
 	text-align :center;

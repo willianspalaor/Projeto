@@ -8,6 +8,7 @@ include_once BASE_PATH . 'models/Stock.php';
 include_once BASE_PATH . 'models/StockModel.php';
 include_once BASE_PATH . 'models/ProductCategory.php';
 include_once BASE_PATH . 'models/ProductCategoryModel.php';
+include_once BASE_PATH . 'helpers/fpdf/fpdf.php';
 
 
 class HomeController extends Controller {
@@ -241,4 +242,75 @@ class HomeController extends Controller {
     	$_SESSION['category'] = $_POST['sub_category'];
     }
 
+
+    public function isArray($id){
+
+    	if(strrpos($id, ",")){
+    		return true;
+    	}
+
+    	return false;
+    }
+
+
+    public function finishBuy(){
+
+    	$productModel = new ProductModel();
+    	$stockModel   = new StockModel();
+
+    	$id = $_POST['product_id'];
+
+    	$productsId = [];
+
+    	if($this->isArray($id)){
+
+    		$productsId = $products = split(',', $id);
+
+    	}else{
+
+    		$productsId[] = $id;
+    	}
+
+
+    	$total = 0;
+
+		foreach($productsId as $productId){
+
+			$product = $productModel->findOne(array('product_id' => $productId));
+			$stock   = $stockModel->findOne(array('product_id' => $productId));
+
+			$quantity = $stock->getQuantity();
+			$stock->setQuantity($quantity - 1); 
+			$stockModel->update($stock);
+
+			if($this->hasDiscount($product)){
+
+				$total += $this->getDiscount($product);
+
+			}else{
+				$total += $product->getPrice();
+			}
+		}
+
+		$result = array('buy_total' => '$' . $total,
+						'product_id' => $id);
+		echo json_encode($result);
+    }
+
+
+    public function printInvoice(){
+
+    	header('Content-Type: application/pdf');
+
+    	$pdf= new FPDF("P","pt","A4");
+
+		$pdf->AddPage();
+		$pdf->SetFont('arial','B',12);
+		$pdf->Cell(0,5,"Fatura",0,1,'L');
+		$pdf->Ln(8);
+
+
+		ob_clean();
+		$pdf->Output("fatura.pdf","D");	
+    }
 }
