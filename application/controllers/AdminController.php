@@ -4,7 +4,7 @@ class AdminController extends Controller{
 
 	public function index() {
 
-        $teste = 1;
+        $teste = 2;
 
         if($this->authenticate(array('user_email', 'user_pass'))){
 			
