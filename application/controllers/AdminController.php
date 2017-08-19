@@ -4,7 +4,9 @@ class AdminController extends Controller{
 
 	public function index() {
 
-		if($this->authenticate(array('user_email', 'user_pass'))){
+        $teste = 1;
+
+        if($this->authenticate(array('user_email', 'user_pass'))){
 			
 			$this->setLayout('layout-admin');
 			$this->setView('admin/index');
