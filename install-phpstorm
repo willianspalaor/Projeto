@@ -5,3 +5,8 @@ sudo tar xvf PhpStorm-2019.1.tar.gz --directory /opt/
 
 Now run the shell script to start PhpStorm:
 /opt/Phpstorm-*/bin/phpstorm.sh
+
+
+
+apt-get install default-jdk
+export DISPLAY=:0
