@@ -1,7 +1,7 @@
 wget https://download.jetbrains.com/webide/PhpStorm-2019.1.tar.gz
 
 Once downloaded, extract the .tar.gz file to /opt/ directory, which is used to store third-party applications on Unix/Linux systems.
-sudo tar xvf PhpStorm-2018.3.tar.gz --directory /opt/
+sudo tar xvf PhpStorm-2019.1.tar.gz --directory /opt/
 
 Now run the shell script to start PhpStorm:
 /opt/Phpstorm-*/bin/phpstorm.sh
